@@ -1,7 +1,43 @@
 
 # 📊 Advanced Database Project – Social Media Dashboard
 
-A hybrid database project using **MySQL** and **MongoDB** to simulate a social media platform with features like posts, likes, follows, tags, notifications, and advanced analytics.
+A hybrid database project using **MySQL** and **MongoDB** to simulate a **social media platform** with features like posts, likes, follows, tags, notifications, and advanced analytics. This project highlights advanced database concepts including stored procedures, triggers, and data visualizations.
+
+---
+
+## 📁 Project Structure
+
+```
+AdvancedDatabaseProject/
+│
+├── analytics/                # Python visualization scripts (Plotly)
+│   └── plot_post_count.py
+│
+├── mongodb/                  # MongoDB CRUD and aggregation logic
+│   ├── initialize-db.mongodb.js
+│   ├── find-query.mongodb.js
+│   ├── update.mongodb.js
+│   ├── delete.mongodb.js
+│   ├── aggregation.mongodb.js
+│   └── delete_queries.py
+│
+├── sql/                      # Full MySQL-based schema and logic
+│   ├── create.sql
+│   ├── insert.sql
+│   ├── seed_data.sql
+│   ├── create_procedures.sql
+│   ├── create_triggar.sql
+│   ├── basic-crud.sql
+│   ├── join-queries.sql
+│   ├── procedure.sql
+│   ├── analytics.sql
+│   ├── aggregation-queries.sql
+│   ├── activity_log.sql
+│   └── trigger_queries.sql
+│
+├── .env                      # Local DB credentials (ignored)
+└── connect.js                # (Optional) JS connector for Mongo/MySQL
+```
 
 ---
 
@@ -22,37 +58,6 @@ A hybrid database project using **MySQL** and **MongoDB** to simulate a social m
   - Most tagged posts
 
 ---
-
-## 📅 Project Structure
-
-AdvancedDatabaseProject/
-├── analytics/                    # Data Visualizations (Python + Plotly)
-│   └── plot_post_count.py       # Dashboard script
-│
-├── mongodb/                     # MongoDB scripts
-│   ├── initialize-db.mongodb.js
-│   ├── find-query.mongodb.js
-│   ├── update.mongodb.js
-│   ├── delete.mongodb.js
-│   ├── aggregation.mongodb.js
-│   └── delete_queries.py
-│
-├── sql/                         # MySQL database files
-│   ├── create.sql               # Table schema
-│   ├── insert.sql               # Sample records
-│   ├── seed_data.sql            # Enriched realistic data
-│   ├── create_procedures.sql   # Stored procedures
-│   ├── create_triggar.sql      # Triggers
-│   ├── basic-crud.sql           
-│   ├── join-queries.sql
-│   ├── procedure.sql
-│   ├── analytics.sql
-│   ├── aggregation-queries.sql
-│   ├── activity_log.sql
-│   └── trigger_queries.sql
-│
-├── .env                         # DB credentials
-└── connect.js                   # DB connection (for Node if needed)
 
 ### 📌 Sample SQL Queries
 
@@ -79,16 +84,18 @@ ORDER BY like_count DESC;
 
 ### 🔥 Features
 
-- CRUD for `stories`, `authors`, and `likes`
-- Aggregation pipelines for insights like:
-  - Word frequency
-  - Story trends over years
-  - Most liked stories
-  - Tag-based story distribution
+- **CRUD operations** for:
+  - Stories (post-like documents)
+  - Authors (user-like documents)
+  - Likes (embedded/linked)
+- **Aggregation Pipelines** for:
+  - Tag frequency
+  - Yearly trends
+  - Popular content insights
 
 ---
 
-### 📌 Sample Aggregation
+### 📌 Sample Aggregation Query
 
 ```javascript
 db.stories.aggregate([
@@ -102,15 +109,14 @@ db.stories.aggregate([
 
 ## 📈 Visual Dashboard
 
-> Built using **Python** and **Plotly Express**  
-> Interactive and clean visual representation of key metrics
+> Built using **Python** + **Plotly Express**
 
 ### Visualizations:
 - Posts per User (Bar Chart)
 - Likes per Post (Bar Chart)
-- Follower Leaderboard (Horizontal Bar Chart)
-- Tag Frequency (Pie or Bar Chart)
-- MySQL vs MongoDB Query Results Comparison
+- Follower Leaderboard (Horizontal Chart)
+- Tag Frequency (Pie/Bar Chart)
+- MongoDB vs MySQL Analysis
 
 ---
 
@@ -120,11 +126,11 @@ db.stories.aggregate([
 - MySQL 8+
 - MongoDB 6+
 - Python 3.10+
-- VS Code (recommended)
+- VSCode (recommended)
 
 ---
 
-### 🛠 Run MySQL Scripts
+### 🛠 MySQL Setup
 
 ```bash
 mysql -u root -p < sql/create.sql
@@ -134,7 +140,7 @@ mysql -u root -p < sql/create_procedures.sql
 
 ---
 
-### 🛠 Run MongoDB Script
+### 🍃 MongoDB Setup
 
 From Mongo shell:
 
@@ -159,13 +165,13 @@ python plot_post_count.py
 - Posts per User 📊
 - Like Distribution 💙
 - Follower Leaderboard 📢
-- Tag Insights 🏷
+- Tag Analytics 🏷
 
 ---
 
 ## 🪪 License
 
-This project is licensed under the Apache 2.0 License.
+Licensed under the Apache 2.0 License.
 
 ---
 
