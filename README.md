@@ -49,16 +49,36 @@ AdvancedDatabaseProject/
 
 ## ✅ MySQL Implementation
 
-### 📌 Features
+### 🔥 Features
 
-- **Relational schema** for social media:
-  - `user`, `post`, `post_likes`, `post_tags`, `follow`, `notification`, etc.
+- **Relational schema** for a social media app:
+  - Tables: `user`, `post`, `post_likes`, `post_tags`, `follow`, `notification`, etc.
 - **Stored Procedures**:
-  - Add posts, update activity logs, notify on new likes
+  - Add post, update activity log, trigger notifications
 - **Triggers**:
   - Auto-update `last_activity`, prevent deletion of users with posts
 - **Analytics**:
   - Most liked posts
   - Most active users
   - Most followed users
-  - Most tagged content
+  - Most tagged posts
+
+---
+
+### 📌 Sample SQL Queries
+
+```sql
+-- Top 5 users by post count
+SELECT u.name, COUNT(p.id) AS total_posts
+FROM user u
+JOIN post p ON u.id = p.user_id
+GROUP BY u.name
+ORDER BY total_posts DESC
+LIMIT 5;
+
+-- Most liked posts
+SELECT p.id, COUNT(pl.user_id) AS like_count
+FROM post p
+JOIN post_likes pl ON p.id = pl.post_id
+GROUP BY p.id
+ORDER BY like_count DESC;
