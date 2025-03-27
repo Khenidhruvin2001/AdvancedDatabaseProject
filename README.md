@@ -1,51 +1,9 @@
-# 📊 Advanced Databases Project (Social Media Dashboard)
 
-A comprehensive project showcasing advanced **SQL + MongoDB** operations for a social media platform. This dual-stack implementation demonstrates practical applications of database design, aggregation, stored procedures, triggers, and visualization dashboards.
+# 📊 Advanced Database Project – Social Media Dashboard
 
----
-
-## 🔧 Technologies Used
-
-- **MySQL 8+** (Relational DB)
-- **MongoDB 6+** (NoSQL Document DB)
-- **Python 3.10+**
-- **Plotly / Dash** for data visualization
+A hybrid database project using **MySQL** and **MongoDB** to simulate a social media platform with features like posts, likes, follows, tags, notifications, and advanced analytics.
 
 ---
-
-## 📁 Project Structure
-
-```bash
-AdvancedDatabaseProject/
-│
-├── analytics/                # Python dashboards & visualization scripts
-│   └── plot_post_count.py
-│
-├── mongodb/                  # MongoDB CRUD and aggregation
-│   ├── initialize-db.mongodb.js
-│   ├── find-query.mongodb.js
-│   ├── update.mongodb.js
-│   ├── delete.mongodb.js
-│   ├── aggregation.mongodb.js
-│   └── delete_queries.py
-│
-├── sql/                      # Full MySQL project
-│   ├── create.sql
-│   ├── insert.sql
-│   ├── seed_data.sql
-│   ├── create_procedures.sql
-│   ├── create_triggar.sql
-│   ├── basic-crud.sql
-│   ├── join-queries.sql
-│   ├── procedure.sql
-│   ├── analytics.sql
-│   ├── aggregation-queries.sql
-│   ├── activity_log.sql
-│   └── trigger_queries.sql
-│
-├── .env                      # Local DB credentials
-└── connect.js                # DB connection helper (Node/Mongo optional)
-
 
 ## ✅ MySQL Implementation
 
@@ -82,3 +40,105 @@ FROM post p
 JOIN post_likes pl ON p.id = pl.post_id
 GROUP BY p.id
 ORDER BY like_count DESC;
+```
+
+---
+
+## 🍃 MongoDB Implementation
+
+### 🔥 Features
+
+- CRUD for `stories`, `authors`, and `likes`
+- Aggregation pipelines for insights like:
+  - Word frequency
+  - Story trends over years
+  - Most liked stories
+  - Tag-based story distribution
+
+---
+
+### 📌 Sample Aggregation
+
+```javascript
+db.stories.aggregate([
+  { $unwind: "$tags" },
+  { $group: { _id: "$tags", count: { $sum: 1 } } },
+  { $sort: { count: -1 } }
+])
+```
+
+---
+
+## 📈 Visual Dashboard
+
+> Built using **Python** and **Plotly Express**  
+> Interactive and clean visual representation of key metrics
+
+### Visualizations:
+- Posts per User (Bar Chart)
+- Likes per Post (Bar Chart)
+- Follower Leaderboard (Horizontal Bar Chart)
+- Tag Frequency (Pie or Bar Chart)
+- MySQL vs MongoDB Query Results Comparison
+
+---
+
+## ⚙️ How to Run
+
+### Prerequisites:
+- MySQL 8+
+- MongoDB 6+
+- Python 3.10+
+- VS Code (recommended)
+
+---
+
+### 🛠 Run MySQL Scripts
+
+```bash
+mysql -u root -p < sql/create.sql
+mysql -u root -p < sql/seed_data.sql
+mysql -u root -p < sql/create_procedures.sql
+```
+
+---
+
+### 🛠 Run MongoDB Script
+
+From Mongo shell:
+
+```js
+load("mongodb/initialize-db.mongodb.js")
+```
+
+---
+
+### 🚀 Run Dashboard
+
+```bash
+cd analytics/
+pip install -r requirements.txt
+python plot_post_count.py
+```
+
+---
+
+## 🖼 Sample Screenshots
+
+- Posts per User 📊
+- Like Distribution 💙
+- Follower Leaderboard 📢
+- Tag Insights 🏷
+
+---
+
+## 🪪 License
+
+This project is licensed under the Apache 2.0 License.
+
+---
+
+## 🙌 Credits
+
+Created by **Dhruvin Kheni**  
+Database Design, Triggers, Procedures, and MongoDB Aggregation authored by Dhruvin.
