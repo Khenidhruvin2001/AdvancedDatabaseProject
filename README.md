@@ -45,3 +45,33 @@ AdvancedDatabaseProject/
 │
 ├── .env                      # Local DB credentials
 └── connect.js                # DB connection helper (Node/Mongo optional)
+
+
+---
+
+## ✅ MySQL Implementation
+
+### 📌 Features
+
+- **Relational schema** for social media:
+  - `user`, `post`, `post_likes`, `post_tags`, `follow`, `notification`, etc.
+- **Stored Procedures**:
+  - Add posts, update activity logs, notify on new likes
+- **Triggers**:
+  - Auto-update `last_activity`, prevent deletion of users with posts
+- **Analytics**:
+  - Most liked posts
+  - Most active users
+  - Most followed users
+  - Most tagged content
+
+### 🧪 Sample Queries
+
+```sql
+-- Top 5 users by post count
+SELECT u.name, COUNT(p.id) AS total_posts
+FROM user u
+JOIN post p ON u.id = p.user_id
+GROUP BY u.name
+ORDER BY total_posts DESC
+LIMIT 5;
