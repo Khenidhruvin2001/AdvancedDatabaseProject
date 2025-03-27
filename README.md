@@ -23,6 +23,37 @@ A hybrid database project using **MySQL** and **MongoDB** to simulate a social m
 
 ---
 
+## 📅 Project Structure
+
+AdvancedDatabaseProject/
+├── analytics/                    # Data Visualizations (Python + Plotly)
+│   └── plot_post_count.py       # Dashboard script
+│
+├── mongodb/                     # MongoDB scripts
+│   ├── initialize-db.mongodb.js
+│   ├── find-query.mongodb.js
+│   ├── update.mongodb.js
+│   ├── delete.mongodb.js
+│   ├── aggregation.mongodb.js
+│   └── delete_queries.py
+│
+├── sql/                         # MySQL database files
+│   ├── create.sql               # Table schema
+│   ├── insert.sql               # Sample records
+│   ├── seed_data.sql            # Enriched realistic data
+│   ├── create_procedures.sql   # Stored procedures
+│   ├── create_triggar.sql      # Triggers
+│   ├── basic-crud.sql           
+│   ├── join-queries.sql
+│   ├── procedure.sql
+│   ├── analytics.sql
+│   ├── aggregation-queries.sql
+│   ├── activity_log.sql
+│   └── trigger_queries.sql
+│
+├── .env                         # DB credentials
+└── connect.js                   # DB connection (for Node if needed)
+
 ### 📌 Sample SQL Queries
 
 ```sql
